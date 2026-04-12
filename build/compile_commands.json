@@ -1,0 +1,32 @@
+[
+{
+  "directory": "/home/febbs/workspace/main/projects/visuals/gol/build",
+  "command": "/usr/bin/c++  -I/home/febbs/workspace/main/projects/visuals/gol/include -isystem /usr/include/SDL2  -o CMakeFiles/app.dir/src/game.cpp.o -c /home/febbs/workspace/main/projects/visuals/gol/src/game.cpp",
+  "file": "/home/febbs/workspace/main/projects/visuals/gol/src/game.cpp",
+  "output": "CMakeFiles/app.dir/src/game.cpp.o"
+},
+{
+  "directory": "/home/febbs/workspace/main/projects/visuals/gol/build",
+  "command": "/usr/bin/c++  -I/home/febbs/workspace/main/projects/visuals/gol/include -isystem /usr/include/SDL2  -o CMakeFiles/app.dir/src/input.cpp.o -c /home/febbs/workspace/main/projects/visuals/gol/src/input.cpp",
+  "file": "/home/febbs/workspace/main/projects/visuals/gol/src/input.cpp",
+  "output": "CMakeFiles/app.dir/src/input.cpp.o"
+},
+{
+  "directory": "/home/febbs/workspace/main/projects/visuals/gol/build",
+  "command": "/usr/bin/c++  -I/home/febbs/workspace/main/projects/visuals/gol/include -isystem /usr/include/SDL2  -o CMakeFiles/app.dir/src/main.cpp.o -c /home/febbs/workspace/main/projects/visuals/gol/src/main.cpp",
+  "file": "/home/febbs/workspace/main/projects/visuals/gol/src/main.cpp",
+  "output": "CMakeFiles/app.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/febbs/workspace/main/projects/visuals/gol/build",
+  "command": "/usr/bin/c++  -I/home/febbs/workspace/main/projects/visuals/gol/include -isystem /usr/include/SDL2  -o CMakeFiles/app.dir/src/render.cpp.o -c /home/febbs/workspace/main/projects/visuals/gol/src/render.cpp",
+  "file": "/home/febbs/workspace/main/projects/visuals/gol/src/render.cpp",
+  "output": "CMakeFiles/app.dir/src/render.cpp.o"
+},
+{
+  "directory": "/home/febbs/workspace/main/projects/visuals/gol/build",
+  "command": "/usr/bin/c++  -I/home/febbs/workspace/main/projects/visuals/gol/include -isystem /usr/include/SDL2  -o CMakeFiles/app.dir/src/utils.cpp.o -c /home/febbs/workspace/main/projects/visuals/gol/src/utils.cpp",
+  "file": "/home/febbs/workspace/main/projects/visuals/gol/src/utils.cpp",
+  "output": "CMakeFiles/app.dir/src/utils.cpp.o"
+}
+]

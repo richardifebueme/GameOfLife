@@ -1,0 +1,3 @@
+/home/febbs/workspace/main/projects/visuals/gol/build/CMakeFiles/app.dir
+/home/febbs/workspace/main/projects/visuals/gol/build/CMakeFiles/edit_cache.dir
+/home/febbs/workspace/main/projects/visuals/gol/build/CMakeFiles/rebuild_cache.dir
