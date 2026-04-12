@@ -11,14 +11,17 @@ void render(GameObj& g) {
     SDL_SetRenderDrawColor(g.rend, 255, 255, 255, 255);
     SDL_RenderClear(g.rend);
 
-    // Draw Cells
     for (short i = 0; i < GRID_WIDTH; i++) {
         for (short j = 0; j < GRID_HEIGHT; j++) {
             if (g.cells[i][j].state == ALIVE) {
                 SDL_SetRenderDrawColor(g.rend, 0, 0, 0, 255);
-            } else {
+            } else if (g.cells[i][j].state == UNDEAD) {
                 SDL_SetRenderDrawColor(g.rend, 255, 255, 255, 255);
-            }
+            } else {
+		SDL_SetRenderDrawColor(g.rend, 169, 169, 169, 255);
+	    }
+
+	    // Draw Cells
             SDL_Rect cell = {g.cells[i][j].coords.x * GRID_SIZE, g.cells[i][j].coords.y * GRID_SIZE, GRID_SIZE, GRID_SIZE};
             SDL_RenderFillRect(g.rend, &cell);
         }

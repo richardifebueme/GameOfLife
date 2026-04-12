@@ -52,7 +52,8 @@ void update_state(GameObj& g) {
 
 			else if ((count == 2 || count == 3) && g.cells[i][j].state == ALIVE) { continue; } 
 
-			else if (count == 3 && g.cells[i][j].state == DEAD) { toggle_cell(cells_copy, i, j); } 
+			else if (count == 3 && (g.cells[i][j].state == DEAD || g.cells[i][j].state == UNDEAD))
+				{ toggle_cell(cells_copy, i, j); } 
 
 			else if (count > 3 && g.cells[i][j].state == ALIVE) { toggle_cell(cells_copy, i, j); }
 		}
@@ -66,7 +67,7 @@ void update_state(GameObj& g) {
 void reset_cells(GameObj& g) {
 	for (int i = 0; i < GRID_HEIGHT; i++) {
 		for ( int j = 0; j < GRID_HEIGHT; j++) {
-			g.cells[i][j].state = DEAD;
+			g.cells[i][j].state = UNDEAD;
 		}
 	}
 }

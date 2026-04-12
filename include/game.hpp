@@ -4,12 +4,13 @@
 #include "header.hpp"
 
 enum CellState{
+    UNDEAD,
     ALIVE,
     DEAD
 };
 
 struct Cell {
-    CellState state = DEAD;
+    CellState state = UNDEAD;
     SDL_Point coords;
 };
 
