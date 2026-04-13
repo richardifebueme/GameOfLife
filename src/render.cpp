@@ -27,7 +27,7 @@ void render(GameObj& g) {
         }
     }
 
-    SDL_SetRenderDrawColor(g.rend, 0, 0, 0, 255);
+    SDL_SetRenderDrawColor(g.rend, 108, 108, 108, 255);
     // Draw Grid
     // Vertical Lines
     for ( int i = 0; i < WINDOW_WIDTH; i+=GRID_SIZE) {
