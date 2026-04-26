@@ -21,7 +21,6 @@ void handle_input(GameObj& g) {
                     break;
                 case SDLK_SPACE:
                     toggle_game_state(g);
-                    update_state(g);
                     break;
                 case SDLK_r:
                     reset_cells(g);
@@ -31,32 +30,23 @@ void handle_input(GameObj& g) {
 
         // Handle mouse button down (start of a drag)
         if (g.event.type == SDL_MOUSEBUTTONDOWN) {
+                g.btn = get_grid_point(g.event.button.x, g.event.button.y);
             if (g.event.button.button == SDL_BUTTON_LEFT) {
                 // Start dragging
-                is_dragging = true;
-
-                // Toggle the cell at the initial mouse position
-                SDL_Point btn = get_grid_point(g.event.button.x, g.event.button.y);
-                if (btn.x >= 0 && btn.x < GRID_WIDTH && btn.y >= 0 && btn.y < GRID_HEIGHT) {
-                    toggle_cell(g.cells, btn.x, btn.y);
-                }
+                g.state = GameState::DRAW;
             }
         }
 
         // Handle mouse motion (dragging)
-        if (g.event.type == SDL_MOUSEMOTION && is_dragging) {
-            SDL_Point btn = get_grid_point(g.event.motion.x, g.event.motion.y);
-            if (btn.x >= 0 && btn.x < GRID_WIDTH && btn.y >= 0 && btn.y < GRID_HEIGHT) {
-                toggle_cell(g.cells, btn.x, btn.y);
-            }
+        if (g.state == GameState::DRAW) {
+            g.btn = get_grid_point(g.event.button.x, g.event.button.y);
         }
 
-        // Handle mouse button up (end of the drag)
+        // Handle mouse button up (end of drag)
         if (g.event.type == SDL_MOUSEBUTTONUP) {
-            if (g.event.button.button == SDL_BUTTON_LEFT) {
-                // Stop dragging
-                is_dragging = false;
-            }
+            cout << "IDLE" << endl;
+            // Stop dragging
+            g.state = GameState::IDLE;
         }
     }
 }

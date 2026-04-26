@@ -22,6 +22,7 @@ struct GameObj {
     GameState state;
     bool isRunning = false;
     Cell cells[GRID_WIDTH][GRID_HEIGHT];
+    SDL_Point btn = {-1, -1};
 };
 
 int init_game(GameObj& g);

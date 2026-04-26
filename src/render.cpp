@@ -34,18 +34,24 @@ void render(GameObj& g) {
     case GameState::PLAY:
         update_state(g);
         break;
+    case GameState::DRAW:
+        // Toggle the cell at the current mouse position
+        if (is_valid_point(g.btn.x, g.btn.y)) {
+            toggle_cell(g.cells, g.btn.x, g.btn.y, ALIVE);
+        }
+      break;
     }
-    setColor(g, Color::WHITE);
+    setColor(g, Color::BLACK);
     SDL_RenderClear(g.rend);
 
     for (short i = 0; i < GRID_WIDTH; i++) {
         for (short j = 0; j < GRID_HEIGHT; j++) {
             if (g.cells[i][j].state == ALIVE) {
-                setColor(g, Color::BLACK);
-            } else if (g.cells[i][j].state == UNDEAD) {
                 setColor(g, Color::WHITE);
+            } else if (g.cells[i][j].state == UNDEAD) {
+                setColor(g, Color::BLACK);
             } else {
-                setColor(g, Color::GRAY);
+                setColor(g, Color::BLACK);
 	    }
 
 	    // Draw Cells
@@ -54,8 +60,8 @@ void render(GameObj& g) {
         }
     }
 
-    setColor(g, Color::GRID_CLR);
     // Draw Grid
+    setColor(g, Color::BLACK);
     // Vertical Lines
     for ( int i = 0; i < WINDOW_WIDTH; i+=GRID_SIZE) {
 	SDL_RenderDrawLine(g.rend,  i,  0,  i, WINDOW_HEIGHT);

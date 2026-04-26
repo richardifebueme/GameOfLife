@@ -2,6 +2,7 @@
 
 enum class GameState {
     IDLE,
+    DRAW,
     PLAY
 };
 
