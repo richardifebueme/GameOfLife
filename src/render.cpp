@@ -4,21 +4,48 @@
 
 #include "game.hpp"
 #include "header.hpp"
+#include "utils.hpp"
 #include "render.hpp"
 
 using namespace std;
+
+void setColor(GameObj& g, Color color) {
+    switch (color) {
+    case Color::WHITE:
+        SDL_SetRenderDrawColor(g.rend, 255, 255, 255, 255);
+        break;
+    case Color::BLACK:
+        SDL_SetRenderDrawColor(g.rend, 0, 0, 0, 255);
+        break;
+    case Color::GRAY:
+        SDL_SetRenderDrawColor(g.rend, 169, 169, 169, 255);
+        break;
+    case Color::GRID_CLR:
+        SDL_SetRenderDrawColor(g.rend, 108, 108, 108, 255);
+        break;
+
+    }
+}
+
 void render(GameObj& g) {
-    SDL_SetRenderDrawColor(g.rend, 255, 255, 255, 255);
+    switch(g.state) {
+    case GameState::IDLE:
+        break;
+    case GameState::PLAY:
+        update_state(g);
+        break;
+    }
+    setColor(g, Color::WHITE);
     SDL_RenderClear(g.rend);
 
     for (short i = 0; i < GRID_WIDTH; i++) {
         for (short j = 0; j < GRID_HEIGHT; j++) {
             if (g.cells[i][j].state == ALIVE) {
-                SDL_SetRenderDrawColor(g.rend, 0, 0, 0, 255);
+                setColor(g, Color::BLACK);
             } else if (g.cells[i][j].state == UNDEAD) {
-                SDL_SetRenderDrawColor(g.rend, 255, 255, 255, 255);
+                setColor(g, Color::WHITE);
             } else {
-		SDL_SetRenderDrawColor(g.rend, 169, 169, 169, 255);
+                setColor(g, Color::GRAY);
 	    }
 
 	    // Draw Cells
@@ -27,7 +54,7 @@ void render(GameObj& g) {
         }
     }
 
-    SDL_SetRenderDrawColor(g.rend, 108, 108, 108, 255);
+    setColor(g, Color::GRID_CLR);
     // Draw Grid
     // Vertical Lines
     for ( int i = 0; i < WINDOW_WIDTH; i+=GRID_SIZE) {

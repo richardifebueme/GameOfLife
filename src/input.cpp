@@ -16,7 +16,11 @@ void handle_input(GameObj& g) {
                 case SDLK_q:
                     g.isRunning = false;
                     break;
+                case SDLK_h:
+                    // hide grid;
+                    break;
                 case SDLK_SPACE:
+                    toggle_game_state(g);
                     update_state(g);
                     break;
                 case SDLK_r:

@@ -4,6 +4,12 @@
 #include "utils.hpp"
 #include "header.hpp"
 
+void toggle_game_state(GameObj& g) {
+    if (g.state == GameState::IDLE)
+        g.state = GameState::PLAY;
+    else g.state = GameState::IDLE;
+}
+
 SDL_Point get_grid_point(int x, int y) {
     return SDL_Point {
         x / GRID_SIZE,

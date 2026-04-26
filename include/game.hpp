@@ -2,6 +2,7 @@
 #include <SDL2/SDL.h>
 
 #include "header.hpp"
+#include "types.hpp"
 
 enum CellState{
     UNDEAD,
@@ -18,6 +19,7 @@ struct GameObj {
     SDL_Window* win;
     SDL_Renderer* rend;
     SDL_Event event;
+    GameState state;
     bool isRunning = false;
     Cell cells[GRID_WIDTH][GRID_HEIGHT];
 };
