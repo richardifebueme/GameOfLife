@@ -17,7 +17,7 @@ void handle_input(GameObj& g) {
                     g.isRunning = false;
                     break;
                 case SDLK_h:
-                    // hide grid;
+                    g.displayGrid = !g.displayGrid;
                     break;
                 case SDLK_SPACE:
                     toggle_game_state(g);
@@ -44,7 +44,6 @@ void handle_input(GameObj& g) {
 
         // Handle mouse button up (end of drag)
         if (g.event.type == SDL_MOUSEBUTTONUP) {
-            cout << "IDLE" << endl;
             // Stop dragging
             g.state = GameState::IDLE;
         }

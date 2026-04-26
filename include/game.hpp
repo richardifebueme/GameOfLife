@@ -21,6 +21,7 @@ struct GameObj {
     SDL_Event event;
     GameState state;
     bool isRunning = false;
+    bool displayGrid = true;
     Cell cells[GRID_WIDTH][GRID_HEIGHT];
     SDL_Point btn = {-1, -1};
 };

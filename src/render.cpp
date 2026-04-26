@@ -41,17 +41,17 @@ void render(GameObj& g) {
         }
       break;
     }
-    setColor(g, Color::BLACK);
+    setColor(g, Color::WHITE);
     SDL_RenderClear(g.rend);
 
     for (short i = 0; i < GRID_WIDTH; i++) {
         for (short j = 0; j < GRID_HEIGHT; j++) {
             if (g.cells[i][j].state == ALIVE) {
-                setColor(g, Color::WHITE);
+                setColor(g, Color::BLACK);
             } else if (g.cells[i][j].state == UNDEAD) {
-                setColor(g, Color::BLACK);
+                setColor(g, Color::WHITE);
             } else {
-                setColor(g, Color::BLACK);
+                setColor(g, Color::GRAY);
 	    }
 
 	    // Draw Cells
@@ -61,14 +61,16 @@ void render(GameObj& g) {
     }
 
     // Draw Grid
-    setColor(g, Color::BLACK);
-    // Vertical Lines
-    for ( int i = 0; i < WINDOW_WIDTH; i+=GRID_SIZE) {
-	SDL_RenderDrawLine(g.rend,  i,  0,  i, WINDOW_HEIGHT);
-    }
-    // Horizontal Lines
-    for ( int i = 0; i < WINDOW_HEIGHT; i+=GRID_SIZE) {
-        SDL_RenderDrawLine(g.rend,  0,  i,  WINDOW_WIDTH, i);
+    if (g.displayGrid) {
+        setColor(g, Color::GRID_CLR);
+        // Vertical Lines
+        for ( int i = 0; i < WINDOW_WIDTH; i+=GRID_SIZE) {
+        SDL_RenderDrawLine(g.rend,  i,  0,  i, WINDOW_HEIGHT);
+        }
+        // Horizontal Lines
+        for ( int i = 0; i < WINDOW_HEIGHT; i+=GRID_SIZE) {
+            SDL_RenderDrawLine(g.rend,  0,  i,  WINDOW_WIDTH, i);
+        }
     }
 
 
