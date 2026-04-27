@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_events.h>
+#include <SDL_mouse.h>
 #include <iostream>
 #include "input.hpp"
 #include "utils.hpp"
@@ -32,7 +33,12 @@ void handle_input(GameObj& g) {
 
         // Handle mouse button down (start of a drag)
         if (g.event.type == SDL_MOUSEBUTTONDOWN) {
-                g.btn = get_grid_point(g.event.button.x, g.event.button.y);
+            g.btn = get_grid_point(g.event.button.x, g.event.button.y);
+
+            if (g.event.button.button == SDL_BUTTON_RIGHT) {
+                get_cell_state(g, g.btn.x, g.btn.y);
+            }
+
             if (g.event.button.button == SDL_BUTTON_LEFT) {
                 // Start dragging
                 g.state = GameState::DRAW;

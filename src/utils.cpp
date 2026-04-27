@@ -1,7 +1,10 @@
 #include <SDL2/SDL.h>
+#include <iostream>
 
 #include "utils.hpp"
 #include "header.hpp"
+
+using namespace std;
 
 bool cell_is_alive(GameObj& g, SDL_Point pt) {
     return (is_valid_point(pt.x, pt.y) && g.cells[pt.x][pt.y].state == ALIVE);
@@ -46,7 +49,19 @@ int count_live_neighbors(GameObj& g, int x, int y) {
     return count;
 }
 
-void toggle_cell(Cell cells[GRID_WIDTH][GRID_HEIGHT], int x, int y, CellState state) {
+void get_cell_state(GameObj& g, int x, int y) {
+    CellState state = g.cells[x][y].state;
+    switch (state) {
+    case UNDEAD:
+        cout << "UNDEAD" << endl; break;
+    case ALIVE:
+        cout << "ALIVE" << endl; break;
+    case DEAD:
+        cout << "DEAD" << endl; break;
+    }
+}
+
+void toggle_cell_state(Cell cells[GRID_WIDTH][GRID_HEIGHT], int x, int y, CellState state) {
 	cells[x][y].state = state;
 }
 
@@ -62,14 +77,14 @@ void update_state(GameObj& g) {
 
 			int count = count_live_neighbors(g, i, j);
 
-			if (count < 2 && g.cells[i][j].state == ALIVE) { toggle_cell(cells_copy, i, j, DEAD); } 
+			if (count < 2 && g.cells[i][j].state == ALIVE) { toggle_cell_state(cells_copy, i, j, DEAD); } 
 
 			else if ((count == 2 || count == 3) && g.cells[i][j].state == ALIVE) { continue; } 
 
 			else if (count == 3 && (g.cells[i][j].state == DEAD || g.cells[i][j].state == UNDEAD))
-				{ toggle_cell(cells_copy, i, j, ALIVE); } 
+				{ toggle_cell_state(cells_copy, i, j, ALIVE); } 
 
-			else if (count > 3 && g.cells[i][j].state == ALIVE) { toggle_cell(cells_copy, i, j, DEAD); }
+			else if (count > 3 && g.cells[i][j].state == ALIVE) { toggle_cell_state(cells_copy, i, j, DEAD); }
 		}
 	}
 
@@ -84,4 +99,6 @@ void reset_cells(GameObj& g) {
 			g.cells[i][j].state = UNDEAD;
 		}
 	}
+
+    using namespace std;
 }

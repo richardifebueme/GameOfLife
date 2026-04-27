@@ -24,6 +24,10 @@ struct GameObj {
     bool displayGrid = true;
     Cell cells[GRID_WIDTH][GRID_HEIGHT];
     SDL_Point btn = {-1, -1};
+    Color background_clr = Color::WHITE;
+    Color living_cell_clr = Color::BLACK;
+    Color dead_cell_clr = Color::GRAY;
+    Color grid_clr = Color::LIGHT_GRAY;
 };
 
 int init_game(GameObj& g);
