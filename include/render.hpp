@@ -7,4 +7,3 @@
 
 void render(GameObj& g);
 void setColor(GameObj& g, Color color);
-void draw_cell(GameObj& g, SDL_Point pt);

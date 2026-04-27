@@ -36,15 +36,13 @@ void render(GameObj& g) {
         update_state(g);
         break;
     case GameState::DRAW:
-        // Toggle the cell at the current mouse position
-        if (!cell_is_alive(g, get_grid_point(g.btn.x, g.btn.y))) {
-            cout << "You clicked a dead cell" << endl;
-            toggle_cell_state(g.cells, g.btn.x, g.btn.y, ALIVE);
+        if (is_valid_point(g.btn.x, g.btn.y) && (g.btn.x != g.last_btn.x || g.btn.y != g.last_btn.y)) {
+            if (!cell_is_alive(g, g.btn))
+                toggle_cell_state(g.cells, g.btn.x, g.btn.y, ALIVE);
+            else
+                toggle_cell_state(g.cells, g.btn.x, g.btn.y, UNDEAD);
         }
-
-        else if (is_valid_point(g.btn.x, g.btn.y))
-            toggle_cell_state(g.cells, g.btn.x, g.btn.y, UNDEAD);
-
+        g.last_btn = g.btn;
         break;
     }
 

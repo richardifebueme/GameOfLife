@@ -21,7 +21,7 @@ int main() {
         handle_input(game);
         render(game);
 
-        SDL_Delay(30);
+        SDL_Delay(100);
     }
 
     destroy_game(game);

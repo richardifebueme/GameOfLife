@@ -46,7 +46,7 @@ void handle_input(GameObj& g) {
         }
 
         // Handle mouse motion (dragging)
-        if (g.state == GameState::DRAW) {
+        if (g.event.type == SDL_MOUSEMOTION && g.state == GameState::DRAW) {
             g.btn = get_grid_point(g.event.button.x, g.event.button.y);
         }
 
@@ -54,6 +54,7 @@ void handle_input(GameObj& g) {
         if (g.event.type == SDL_MOUSEBUTTONUP) {
             // Stop dragging
             g.state = GameState::IDLE;
+            g.last_btn = {-1, -1};
         }
     }
 }

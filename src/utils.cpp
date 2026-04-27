@@ -7,7 +7,10 @@
 using namespace std;
 
 bool cell_is_alive(GameObj& g, SDL_Point pt) {
-    return (is_valid_point(pt.x, pt.y) && g.cells[pt.x][pt.y].state == ALIVE);
+    bool pt_is_valid = is_valid_point(pt.x, pt.y);
+    bool is_alive = g.cells[pt.x][pt.y].state == ALIVE;
+
+    return pt_is_valid && is_alive;
 }
 
 void toggle_game_state(GameObj& g) {
