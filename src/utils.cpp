@@ -64,6 +64,9 @@ void get_cell_state(GameObj& g, int x, int y) {
 void toggle_cell_state(Cell cells[GRID_WIDTH][GRID_HEIGHT], int x, int y, CellState state) {
 	cells[x][y].state = state;
 }
+// void toggle_cell(Cell cells[GRID_WIDTH][GRID_HEIGHT], int x, int y) {
+// 	cells[x][y].state = (cells[x][y].state == ALIVE) ? DEAD : ALIVE;
+// }
 
 
 void update_state(GameObj& g) {
