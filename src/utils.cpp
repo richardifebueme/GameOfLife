@@ -3,6 +3,10 @@
 #include "utils.hpp"
 #include "header.hpp"
 
+bool cell_is_alive(GameObj& g, SDL_Point pt) {
+    return (is_valid_point(pt.x, pt.y) && g.cells[pt.x][pt.y].state == ALIVE);
+}
+
 void toggle_game_state(GameObj& g) {
     if (g.state == GameState::IDLE)
         g.state = GameState::PLAY;

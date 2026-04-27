@@ -2,7 +2,7 @@
 
 #include <SDL2/SDL.h>
 
-#define GRID_SIZE 10
+#define GRID_SIZE 20
 #define GRID_WIDTH 100
 #define GRID_HEIGHT 100
 #define WINDOW_WIDTH 1000

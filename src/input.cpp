@@ -7,23 +7,25 @@
 using namespace std;
 
 void handle_input(GameObj& g) {
-    bool is_dragging = false; // Track if the mouse button is pressed
 
     while (SDL_PollEvent(&g.event)) {
         // Handle keyboard events
         if (g.event.type == SDL_KEYDOWN) {
             switch (g.event.key.keysym.sym) {
-                case SDLK_q:
-                    g.isRunning = false;
-                    break;
                 case SDLK_h:
                     g.displayGrid = !g.displayGrid;
                     break;
-                case SDLK_SPACE:
-                    toggle_game_state(g);
+                case SDLK_i:
+                    // invert colors
+                    break;
+                case SDLK_q:
+                    g.isRunning = false;
                     break;
                 case SDLK_r:
                     reset_cells(g);
+                    break;
+                case SDLK_SPACE:
+                    toggle_game_state(g);
                     break;
             }
         }

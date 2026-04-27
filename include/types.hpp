@@ -10,5 +10,5 @@ enum class Color {
     WHITE,
     BLACK,
     GRAY,
-    GRID_CLR
+    LIGHT_GRAY
 };

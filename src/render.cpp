@@ -20,7 +20,7 @@ void setColor(GameObj& g, Color color) {
     case Color::GRAY:
         SDL_SetRenderDrawColor(g.rend, 169, 169, 169, 255);
         break;
-    case Color::GRID_CLR:
+    case Color::LIGHT_GRAY:
         SDL_SetRenderDrawColor(g.rend, 108, 108, 108, 255);
         break;
 
@@ -37,7 +37,9 @@ void render(GameObj& g) {
     case GameState::DRAW:
         // Toggle the cell at the current mouse position
         if (is_valid_point(g.btn.x, g.btn.y)) {
-            toggle_cell(g.cells, g.btn.x, g.btn.y, ALIVE);
+            if (cell_is_alive(g, get_grid_point(g.btn.x, g.btn.y)))
+                toggle_cell(g.cells, g.btn.x, g.btn.y, UNDEAD);
+            else toggle_cell(g.cells, g.btn.x, g.btn.y, ALIVE);
         }
       break;
     }
@@ -62,7 +64,7 @@ void render(GameObj& g) {
 
     // Draw Grid
     if (g.displayGrid) {
-        setColor(g, Color::GRID_CLR);
+        setColor(g, Color::LIGHT_GRAY);
         // Vertical Lines
         for ( int i = 0; i < WINDOW_WIDTH; i+=GRID_SIZE) {
         SDL_RenderDrawLine(g.rend,  i,  0,  i, WINDOW_HEIGHT);
