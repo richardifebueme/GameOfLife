@@ -18,6 +18,7 @@ void handle_input(GameObj& g) {
                     break;
                 case SDLK_i:
                     // invert colors
+                    toggle_colorscheme(g);
                     break;
                 case SDLK_q:
                     g.isRunning = false;

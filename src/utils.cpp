@@ -6,6 +6,10 @@
 
 using namespace std;
 
+void toggle_colorscheme(GameObj& g) {
+    g.cs = (g.cs == ColorScheme::LIGHT) ? ColorScheme::DARK : ColorScheme::LIGHT;
+}
+
 bool cell_is_alive(GameObj& g, SDL_Point pt) {
     bool pt_is_valid = is_valid_point(pt.x, pt.y);
     bool is_alive = g.cells[pt.x][pt.y].state == ALIVE;
@@ -106,5 +110,4 @@ void reset_cells(GameObj& g) {
 		}
 	}
 
-    using namespace std;
 }

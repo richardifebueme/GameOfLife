@@ -29,6 +29,7 @@ struct GameObj {
     Color living_cell_clr = Color::BLACK;
     Color dead_cell_clr = Color::GRAY;
     Color grid_clr = Color::LIGHT_GRAY;
+    ColorScheme cs = ColorScheme::LIGHT;
 };
 
 int init_game(GameObj& g);

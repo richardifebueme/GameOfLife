@@ -12,38 +12,50 @@ using namespace std;
 
 void setColor(GameObj& g, Color color) {
     switch (color) {
-    case Color::WHITE:
-        SDL_SetRenderDrawColor(g.rend, 255, 255, 255, 255);
-        break;
-    case Color::BLACK:
-        SDL_SetRenderDrawColor(g.rend, 0, 0, 0, 255);
-        break;
-    case Color::GRAY:
-        SDL_SetRenderDrawColor(g.rend, 169, 169, 169, 255);
-        break;
-    case Color::LIGHT_GRAY:
-        SDL_SetRenderDrawColor(g.rend, 108, 108, 108, 255);
-        break;
-
+        case Color::WHITE:
+            SDL_SetRenderDrawColor(g.rend, 255, 255, 255, 255);
+            break;
+        case Color::BLACK:
+            SDL_SetRenderDrawColor(g.rend, 0, 0, 0, 255);
+            break;
+        case Color::GRAY:
+            SDL_SetRenderDrawColor(g.rend, 169, 169, 169, 255);
+            break;
+        case Color::LIGHT_GRAY:
+            SDL_SetRenderDrawColor(g.rend, 108, 108, 108, 255);
+            break;
     }
 }
 
 void render(GameObj& g) {
     switch(g.state) {
-    case GameState::IDLE:
-        break;
-    case GameState::PLAY:
-        update_state(g);
-        break;
-    case GameState::DRAW:
-        if (is_valid_point(g.btn.x, g.btn.y) && (g.btn.x != g.last_btn.x || g.btn.y != g.last_btn.y)) {
-            if (!cell_is_alive(g, g.btn))
-                toggle_cell_state(g.cells, g.btn.x, g.btn.y, ALIVE);
-            else
-                toggle_cell_state(g.cells, g.btn.x, g.btn.y, UNDEAD);
-        }
-        g.last_btn = g.btn;
-        break;
+        case GameState::IDLE:
+            break;
+        case GameState::PLAY:
+            update_state(g);
+            break;
+        case GameState::DRAW:
+            if (is_valid_point(g.btn.x, g.btn.y) && (g.btn.x != g.last_btn.x || g.btn.y != g.last_btn.y)) {
+                if (!cell_is_alive(g, g.btn))
+                    toggle_cell_state(g.cells, g.btn.x, g.btn.y, ALIVE);
+                else
+                    toggle_cell_state(g.cells, g.btn.x, g.btn.y, UNDEAD);
+            }
+            g.last_btn = g.btn;
+            break;
+    }
+
+    switch (g.cs) {
+        case ColorScheme::LIGHT:
+            g.background_clr = Color::WHITE;
+            g.living_cell_clr = Color::BLACK;
+            g.dead_cell_clr = Color::GRAY;
+            break;
+        case ColorScheme::DARK:
+            g.background_clr = Color::BLACK;
+            g.living_cell_clr = Color::WHITE;
+            g.dead_cell_clr = Color::BLACK;
+            break;
     }
 
     // Set the background color

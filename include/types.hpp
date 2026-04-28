@@ -12,3 +12,8 @@ enum class Color {
     GRAY,
     LIGHT_GRAY
 };
+
+enum class ColorScheme {
+    LIGHT,
+    DARK
+};

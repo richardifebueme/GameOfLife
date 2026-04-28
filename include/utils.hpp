@@ -4,6 +4,7 @@
 #include "header.hpp"
 #include "game.hpp"
 
+void toggle_colorscheme(GameObj& g);
 bool cell_is_alive(GameObj& g, SDL_Point pt);
 void toggle_game_state(GameObj& g);
 SDL_Point get_grid_point(int x, int y);
